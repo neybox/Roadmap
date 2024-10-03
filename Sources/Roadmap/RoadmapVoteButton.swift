@@ -17,7 +17,7 @@ struct RoadmapVoteButton: View {
     
     var body: some View {
         Button {
-            if viewModel.canVote {
+            if viewModel.canVote && !viewModel.configuration.hasReachedVoteLimit.wrappedValue {
                 Task {
                     if !viewModel.feature.hasVoted {
                         await viewModel.vote()

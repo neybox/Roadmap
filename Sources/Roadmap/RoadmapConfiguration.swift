@@ -32,6 +32,12 @@ public struct RoadmapConfiguration {
 
     /// If set, will be used for sorting features.
     public let sorting: ((RoadmapFeature, RoadmapFeature) -> Bool)?
+	
+	/// The maximum number of votes a user can make. If nil, there's no limit.
+	public let maxVotesPerUser: Int?
+	
+	/// A binding to whether the user has reached their vote limit
+	public let hasReachedVoteLimit: Binding<Bool>
 
     /// Creates a new Roadmap configuration instance.
     /// - Parameters:
@@ -55,7 +61,9 @@ public struct RoadmapConfiguration {
                 sorting: ((RoadmapFeature, RoadmapFeature) -> Bool)? = nil,
                 allowVotes: Bool = true,
                 allowSearching: Bool = false,
-                allowsFilterByStatus: Bool = false) {
+                allowsFilterByStatus: Bool = false,
+				maxVotesPerUser: Int? = nil,
+				hasReachedVoteLimit: Binding<Bool> = .constant(false)) {
         
         guard roadmapJSONURL != nil || roadmapRequest != nil else {
             fatalError("Missing roadmap URL or request")
@@ -77,6 +85,8 @@ public struct RoadmapConfiguration {
         self.allowVotes = allowVotes
         self.allowSearching = allowSearching
         self.allowsFilterByStatus = allowsFilterByStatus
+		self.maxVotesPerUser = maxVotesPerUser
+		self.hasReachedVoteLimit = hasReachedVoteLimit
     }
 
 }
