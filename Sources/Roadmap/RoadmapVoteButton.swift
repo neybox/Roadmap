@@ -14,6 +14,7 @@ struct RoadmapVoteButton: View {
     @State private var isHovering = false
     @State private var showNumber = false
     @State private var hasVoted = false
+	@State private var id = UUID()
     
     var body: some View {
         Button {
@@ -99,6 +100,10 @@ struct RoadmapVoteButton: View {
         }
         .buttonStyle(.plain)
 		.disabled(!viewModel.canVote || !viewModel.configuration.voter.canVoteFor(viewModel.feature))
+		.id(id)
+		.onChange(of: viewModel.configuration.hasReachedVoteLimit.wrappedValue) { _ in
+			id = UUID()
+		}
         .onChange(of: viewModel.voteCount) { newCount in
             if newCount > 0 {
                 withAnimation(.spring(response: 0.45, dampingFraction: 0.4, blendDuration: 0)) {

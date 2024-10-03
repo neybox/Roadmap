@@ -37,7 +37,7 @@ public struct RoadmapConfiguration {
 	public let maxVotesPerUser: Int?
 	
 	/// A binding to whether the user has reached their vote limit
-	public let hasReachedVoteLimit: Binding<Bool>
+	public var hasReachedVoteLimit: Binding<Bool>
 
     /// Creates a new Roadmap configuration instance.
     /// - Parameters:
