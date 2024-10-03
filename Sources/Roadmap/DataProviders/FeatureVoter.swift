@@ -18,4 +18,7 @@ public protocol FeatureVoter {
     /// Removes a vote for the given feature.
     /// - Returns: The new `count` if successful.
     func unvote(for feature: RoadmapFeature) async -> Int?
+	
+	/// Checks if voting is allowed for the given feature.
+	func canVoteFor(_ feature: RoadmapFeature) -> Bool
 }

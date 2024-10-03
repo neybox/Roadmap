@@ -17,7 +17,7 @@ struct RoadmapVoteButton: View {
     
     var body: some View {
         Button {
-            if viewModel.canVote && !viewModel.configuration.hasReachedVoteLimit.wrappedValue {
+			if viewModel.canVote { // && !viewModel.configuration.hasReachedVoteLimit.wrappedValue {
                 Task {
                     if !viewModel.feature.hasVoted {
                         await viewModel.vote()
@@ -98,6 +98,7 @@ struct RoadmapVoteButton: View {
             .overlay(overlayBorder)
         }
         .buttonStyle(.plain)
+		.disabled(!viewModel.canVote || !viewModel.configuration.voter.canVoteFor(viewModel.feature))
         .onChange(of: viewModel.voteCount) { newCount in
             if newCount > 0 {
                 withAnimation(.spring(response: 0.45, dampingFraction: 0.4, blendDuration: 0)) {
