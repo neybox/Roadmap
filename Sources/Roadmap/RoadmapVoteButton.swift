@@ -20,7 +20,7 @@ struct RoadmapVoteButton: View {
         Button {
 			if viewModel.canVote && viewModel.configuration.voter.canVote(for: viewModel.feature) {
                 Task {
-                    if !viewModel.feature.hasVoted {
+                    if !viewModel.hasVoted {
                         await viewModel.vote()
                     } else {
                         await viewModel.unvote()
@@ -36,7 +36,7 @@ struct RoadmapVoteButton: View {
                 if typeSize.isAccessibilitySize {
                     HStack(spacing: isHovering ? 2 : 0) {
                         if viewModel.canVote {
-                            if !viewModel.feature.hasVoted {
+                            if !viewModel.hasVoted {
                                 viewModel.configuration.style.upvoteIcon
                                     .foregroundColor(hasVoted ? viewModel.configuration.style.selectedForegroundColor : viewModel.configuration.style.tintColor)
                                     .imageScale(.large)
@@ -65,7 +65,7 @@ struct RoadmapVoteButton: View {
                 } else {
                     VStack(spacing: isHovering ? 6 : 4) {
                         if viewModel.canVote {
-                            if !viewModel.feature.hasVoted {
+                            if !viewModel.hasVoted {
                                 viewModel.configuration.style.upvoteIcon
                                     .foregroundColor(hasVoted ? viewModel.configuration.style.selectedForegroundColor : viewModel.configuration.style.tintColor)
                                     .imageScale(.large)
@@ -111,7 +111,7 @@ struct RoadmapVoteButton: View {
                 }
             }
         }
-        .onChange(of: viewModel.feature.hasVoted) { newVote in
+        .onChange(of: viewModel.hasVoted) { newVote in
             withAnimation(.spring(response: 0.45, dampingFraction: 0.4, blendDuration: 0)) {
                 hasVoted = newVote
             }
@@ -127,11 +127,11 @@ struct RoadmapVoteButton: View {
             showNumber = viewModel.voteCount > 0
 			hasVoted = viewModel.configuration.voter.hasVoted(for: viewModel.feature)
             withAnimation(.spring(response: 0.45, dampingFraction: 0.4, blendDuration: 0)) {
-                hasVoted = viewModel.feature.hasVoted
+                hasVoted = viewModel.hasVoted
             }
         }
-        .accessibilityHint(viewModel.canVote ? !viewModel.feature.hasVoted ? Text("Vote for \(viewModel.feature.localizedFeatureTitle)") : Text("Remove vote for \(viewModel.feature.localizedFeatureTitle)") : Text(""))
-        .help(viewModel.canVote ? !viewModel.feature.hasVoted ? Text("Vote for \(viewModel.feature.localizedFeatureTitle)") : Text("Remove vote for \(viewModel.feature.localizedFeatureTitle)") : Text(""))
+        .accessibilityHint(viewModel.canVote ? !viewModel.hasVoted ? Text("Vote for \(viewModel.feature.localizedFeatureTitle)") : Text("Remove vote for \(viewModel.feature.localizedFeatureTitle)") : Text(""))
+        .help(viewModel.canVote ? !viewModel.hasVoted ? Text("Vote for \(viewModel.feature.localizedFeatureTitle)") : Text("Remove vote for \(viewModel.feature.localizedFeatureTitle)") : Text(""))
         .animateAccessible()
         .accessibilityShowsLargeContentViewer()
     }
