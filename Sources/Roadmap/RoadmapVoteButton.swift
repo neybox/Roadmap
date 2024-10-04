@@ -18,7 +18,7 @@ struct RoadmapVoteButton: View {
     
     var body: some View {
         Button {
-			if viewModel.canVote && viewModel.configuration.voter.canVoteFor(viewModel.feature) {
+			if viewModel.canVote && viewModel.configuration.voter.canVote(for: viewModel.feature) {
                 Task {
                     if !viewModel.feature.hasVoted {
                         await viewModel.vote()
@@ -99,7 +99,7 @@ struct RoadmapVoteButton: View {
             .overlay(overlayBorder)
         }
         .buttonStyle(.plain)
-		.disabled(!viewModel.canVote || !viewModel.configuration.voter.canVoteFor(viewModel.feature))
+		.disabled(!viewModel.canVote || !viewModel.configuration.voter.canVote(for: viewModel.feature))
 		.id(id)
 		.onChange(of: viewModel.configuration.hasReachedVoteLimit.wrappedValue) { _ in
 			id = UUID()
@@ -125,6 +125,7 @@ struct RoadmapVoteButton: View {
         }
         .onAppear {
             showNumber = viewModel.voteCount > 0
+			hasVoted = viewModel.configuration.voter.hasVoted(for: viewModel.feature)
             withAnimation(.spring(response: 0.45, dampingFraction: 0.4, blendDuration: 0)) {
                 hasVoted = viewModel.feature.hasVoted
             }

@@ -12,14 +12,16 @@ final class RoadmapFeatureViewModel: ObservableObject {
     let feature: RoadmapFeature
     let configuration: RoadmapConfiguration
     let canVote: Bool
+	
+	@Published var hasVoted: Bool
 
     @Published var voteCount = 0
 
     init(feature: RoadmapFeature, configuration: RoadmapConfiguration) {
         self.feature = feature
         self.configuration = configuration
-
         self.canVote = configuration.allowVotes
+		self.hasVoted = configuration.voter.hasVoted(for: feature)
     }
 
     @MainActor

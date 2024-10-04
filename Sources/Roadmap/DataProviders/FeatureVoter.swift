@@ -20,5 +20,8 @@ public protocol FeatureVoter {
     func unvote(for feature: RoadmapFeature) async -> Int?
 	
 	/// Checks if voting is allowed for the given feature.
-	func canVoteFor(_ feature: RoadmapFeature) -> Bool
+	func canVote(for feature: RoadmapFeature) -> Bool
+	
+	/// Checks if the user has previously voted for the given feature.
+	func hasVoted(for feature: RoadmapFeature) -> Bool
 }
