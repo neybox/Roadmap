@@ -73,7 +73,11 @@ public struct FeatureVoterCountAPI: FeatureVoter {
         }
     }
 	
-	public func canVoteFor(_ feature: RoadmapFeature) -> Bool {
+	public func canVote(for feature: RoadmapFeature) -> Bool {
 		return true
+	}
+	
+	public func hasVoted(for feature: RoadmapFeature) -> Bool {
+		return false
 	}
 }
