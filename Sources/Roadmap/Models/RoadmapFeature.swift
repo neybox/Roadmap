@@ -31,22 +31,6 @@ public struct RoadmapFeature: Codable, Identifiable {
     
     var isFinished: Bool? = nil
     
-//    var hasVoted: Bool {
-//        get {
-//            guard let votes = UserDefaults.standard.array(forKey: "roadmap_votes") as? [String] else { return false }
-//            return votes.contains(id)
-//        }
-//        nonmutating set {
-//            var votes = (UserDefaults.standard.array(forKey: "roadmap_votes") as? [String]) ?? []
-//            if newValue {
-//                votes.append(id)
-//            } else {
-//                votes.removeAll(where: { $0 == id })
-//            }
-//            UserDefaults.standard.set(votes, forKey: "roadmap_votes")
-//        }
-//    }
-    
     var hasNotFinished: Bool {
         !(isFinished ?? false)
     }
