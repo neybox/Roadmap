@@ -31,6 +31,9 @@ final class RoadmapFeatureViewModel: ObservableObject {
     @MainActor
     func vote() async {
         let newCount = await configuration.voter.vote(for: feature)
+		if !Reachability.isConnectedToNetwork() {
+			return
+		}
         voteCount = newCount ?? (voteCount + 1)
         hasVoted = true
     }
@@ -38,6 +41,9 @@ final class RoadmapFeatureViewModel: ObservableObject {
     @MainActor
     func unvote() async {
         let newCount = await configuration.voter.unvote(for: feature)
+		if !Reachability.isConnectedToNetwork() {
+			return
+		}
         voteCount = newCount ?? (voteCount - 1)
         hasVoted = false
     }

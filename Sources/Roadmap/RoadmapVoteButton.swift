@@ -20,9 +20,6 @@ struct RoadmapVoteButton: View {
         Button {
 			if viewModel.canVote && viewModel.configuration.voter.canVote(for: viewModel.feature) {
                 Task {
-					if !Reachability.isConnectedToNetwork() {
-						return
-					}
                     if !viewModel.hasVoted {
                         await viewModel.vote()
                     } else {
