@@ -101,6 +101,7 @@ struct RoadmapVoteButton: View {
                     .background(backgroundView)
                 }
             }
+			.accessibility(hidden: true)
             .contentShape(RoundedRectangle(cornerRadius: viewModel.configuration.style.radius, style: .continuous))
             .overlay(overlayBorder)
         }
@@ -138,7 +139,8 @@ struct RoadmapVoteButton: View {
         }
 		.accessibilityElement(children: .ignore)
         .accessibilityHint(viewModel.canVote ? !viewModel.hasVoted ? Text("Vote for \(viewModel.feature.localizedFeatureTitle)") : Text("Remove vote for \(viewModel.feature.localizedFeatureTitle)") : Text(""))
-        .help(viewModel.canVote ? !viewModel.hasVoted ? Text("Vote for \(viewModel.feature.localizedFeatureTitle)") : Text("Remove vote for \(viewModel.feature.localizedFeatureTitle)") : Text(""))
+		.accessibilityAddTraits(.isButton)
+//        .help(viewModel.canVote ? !viewModel.hasVoted ? Text("Vote for \(viewModel.feature.localizedFeatureTitle)") : Text("Remove vote for \(viewModel.feature.localizedFeatureTitle)") : Text(""))
         .animateAccessible()
         .accessibilityShowsLargeContentViewer()
     }
