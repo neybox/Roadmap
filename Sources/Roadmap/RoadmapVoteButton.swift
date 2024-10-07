@@ -72,6 +72,7 @@ struct RoadmapVoteButton: View {
                                     .font(viewModel.configuration.style.numberFont)
                                     .frame(maxWidth: 20, maxHeight: 20)
                                     .minimumScaleFactor(0.75)
+									.accessibility(hidden: true)
                             } else {
                                 viewModel.configuration.style.unvoteIcon
                                     .foregroundColor(hasVoted ? viewModel.configuration.style.selectedForegroundColor : viewModel.configuration.style.tintColor)
@@ -79,6 +80,7 @@ struct RoadmapVoteButton: View {
                                     .font(viewModel.configuration.style.numberFont)
                                     .frame(maxWidth: 20, maxHeight: 20)
                                     .minimumScaleFactor(0.75)
+									.accessibility(hidden: true)
                             }
                         }
                         
@@ -88,6 +90,7 @@ struct RoadmapVoteButton: View {
                                 .foregroundColor(hasVoted ? viewModel.configuration.style.selectedForegroundColor : viewModel.configuration.style.tintColor)
                                 .font(viewModel.configuration.style.numberFont)
                                 .minimumScaleFactor(0.9)
+								.accessibility(hidden: true)
                         }
                     }
                     .frame(minWidth: 56)
