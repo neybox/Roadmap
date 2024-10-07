@@ -42,12 +42,14 @@ struct RoadmapVoteButton: View {
                                     .imageScale(.large)
                                     .font(Font.system(size: 17, weight: .medium))
                                     .frame(maxWidth: 24, maxHeight: 24)
+									.accessibility(hidden: true)
                             } else {
                                 viewModel.configuration.style.unvoteIcon
                                     .foregroundColor(hasVoted ? viewModel.configuration.style.selectedForegroundColor : viewModel.configuration.style.tintColor)
                                     .imageScale(.large)
                                     .font(Font.system(size: 17, weight: .medium))
                                     .frame(maxWidth: 24, maxHeight: 24)
+									.accessibility(hidden: true)
                             }
                         }
                         
