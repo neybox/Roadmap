@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Reachability.swift
 //  Roadmap
 //
 //  Created by Dickie on 06/10/2024.
