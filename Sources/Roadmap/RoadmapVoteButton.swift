@@ -62,6 +62,7 @@ struct RoadmapVoteButton: View {
                                 .font(viewModel.configuration.style.numberFont)
                         }
                     }
+					.accessibility(hidden: true)
                     .padding(viewModel.configuration.style.radius)
                     .frame(minHeight: 64)
                     .background(backgroundView)
@@ -96,6 +97,7 @@ struct RoadmapVoteButton: View {
                                 .minimumScaleFactor(0.9)
                         }
                     }
+					.accessibility(hidden: true)
                     .frame(minWidth: 56)
                     .frame(height: 64)
                     .background(backgroundView)
