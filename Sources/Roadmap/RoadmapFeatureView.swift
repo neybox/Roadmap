@@ -59,6 +59,7 @@ struct RoadmapFeatureView: View {
             
             if viewModel.feature.hasNotFinished {
                 RoadmapVoteButton(viewModel: viewModel)
+					.accessibility(hidden: true)
             }
         }
         .padding()
