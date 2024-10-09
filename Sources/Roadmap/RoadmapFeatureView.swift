@@ -10,6 +10,22 @@ import SwiftUI
 struct RoadmapFeatureView: View {
     @Environment(\.dynamicTypeSize) var typeSize
     @StateObject var viewModel: RoadmapFeatureViewModel
+	
+	private var featureTitleDecriptionAccessibilityLabel: String {
+		let title = viewModel.feature.localizedFeatureTitle
+		let description = viewModel.feature.localizedFeatureDescription
+		let voteCount = viewModel.voteCount
+
+		var label = title
+
+		if !description.isEmpty {
+			label += ". " + description
+		}
+
+		label += ". " + String(localized: "Currently ^[\(voteCount) votes](inflect: true)")
+
+		return label
+	}
 
     var body: some View {
         ZStack{
@@ -40,10 +56,9 @@ struct RoadmapFeatureView: View {
 							.font(viewModel.configuration.style.numberFont)
 							.foregroundColor(Color.secondary)
 					}
-					Text("^[Currently \(viewModel.voteCount) votes](inflect: true)")
-						.hidden()
 				}
 				.accessibilityElement(children: .combine)
+				.accessibilityLabel(featureTitleDecriptionAccessibilityLabel)
 
                 if let localizedStatus = viewModel.feature.localizedFeatureStatus {
                     let status = viewModel.feature.unlocalizedFeatureStatus
@@ -79,21 +94,25 @@ struct RoadmapFeatureView: View {
             }
             
             VStack(alignment: .leading, spacing: 8) {
-                HStack {
-                    Text(viewModel.feature.localizedFeatureTitle)
-                        .font(viewModel.configuration.style.titleFont)
-                    
-                    if !viewModel.feature.hasNotFinished {
-                        Spacer()
-                    }
-                }
-                
-                let description = viewModel.feature.localizedFeatureDescription
-                if !description.isEmpty {
-                    Text(description)
-                        .font(viewModel.configuration.style.numberFont)
-                        .foregroundColor(Color.secondary)
-                }
+				VStack(alignment: .leading, spacing: 0) {
+					HStack {
+						Text(viewModel.feature.localizedFeatureTitle)
+							.font(viewModel.configuration.style.titleFont)
+						
+						if !viewModel.feature.hasNotFinished {
+							Spacer()
+						}
+					}
+					
+					let description = viewModel.feature.localizedFeatureDescription
+					if !description.isEmpty {
+						Text(description)
+							.font(viewModel.configuration.style.numberFont)
+							.foregroundColor(Color.secondary)
+					}
+				}
+				.accessibilityElement(children: .combine)
+				.accessibilityLabel(featureTitleDecriptionAccessibilityLabel)
 
                 if let localizedStatus = viewModel.feature.localizedFeatureStatus {
                     let status = viewModel.feature.unlocalizedFeatureStatus
