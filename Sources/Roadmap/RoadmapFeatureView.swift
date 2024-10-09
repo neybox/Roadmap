@@ -40,6 +40,8 @@ struct RoadmapFeatureView: View {
 							.font(viewModel.configuration.style.numberFont)
 							.foregroundColor(Color.secondary)
 					}
+					Text("^[Currently \(viewModel.voteCount) votes](inflect: true)")
+						.hidden()
 				}
 				.accessibilityElement(children: .combine)
 

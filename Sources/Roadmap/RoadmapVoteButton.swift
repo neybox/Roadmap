@@ -142,10 +142,10 @@ struct RoadmapVoteButton: View {
                 hasVoted = viewModel.hasVoted
             }
         }
-		.accessibilityLabel(viewModel.canVote ? !viewModel.hasVoted ? Text("Vote for \(viewModel.feature.localizedFeatureTitle)") : Text("Remove vote for \(viewModel.feature.localizedFeatureTitle)") : Text(""))
-//        .accessibilityHint(viewModel.canVote ? !viewModel.hasVoted ? Text("Vote for \(viewModel.feature.localizedFeatureTitle)") : Text("Remove vote for \(viewModel.feature.localizedFeatureTitle)") : Text(""))
+		.accessibilityLabel(viewModel.canVote ? !viewModel.hasVoted
+							? Text("Vote for \(viewModel.feature.localizedFeatureTitle)")
+							: Text("Remove vote for \(viewModel.feature.localizedFeatureTitle)") : Text(""))
 		.accessibilityAddTraits(.isButton)
-//        .help(viewModel.canVote ? !viewModel.hasVoted ? Text("Vote for \(viewModel.feature.localizedFeatureTitle)") : Text("Remove vote for \(viewModel.feature.localizedFeatureTitle)") : Text(""))
         .animateAccessible()
         .accessibilityShowsLargeContentViewer()
     }
