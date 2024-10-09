@@ -46,19 +46,15 @@ struct RoadmapFeatureView: View {
     var horizontalCell : some View {
         HStack {
             VStack(alignment: .leading, spacing: 8) {
-				VStack(alignment: .leading, spacing: 0) {
-					Text(viewModel.feature.localizedFeatureTitle)
-						.font(viewModel.configuration.style.titleFont)
-					
-					let description = viewModel.feature.localizedFeatureDescription
-					if !description.isEmpty {
-						Text(description)
-							.font(viewModel.configuration.style.numberFont)
-							.foregroundColor(Color.secondary)
-					}
+				Text(viewModel.feature.localizedFeatureTitle)
+					.font(viewModel.configuration.style.titleFont)
+				
+				let description = viewModel.feature.localizedFeatureDescription
+				if !description.isEmpty {
+					Text(description)
+						.font(viewModel.configuration.style.numberFont)
+						.foregroundColor(Color.secondary)
 				}
-				.accessibilityElement(children: .combine)
-				.accessibilityLabel(featureTitleDecriptionAccessibilityLabel)
 
                 if let localizedStatus = viewModel.feature.localizedFeatureStatus {
                     let status = viewModel.feature.unlocalizedFeatureStatus
@@ -74,6 +70,8 @@ struct RoadmapFeatureView: View {
                         .font(viewModel.configuration.style.statusFont)
                 }
             }
+			.accessibilityElement(children: .combine)
+			.accessibilityLabel(featureTitleDecriptionAccessibilityLabel)
             
             Spacer()
             
@@ -128,6 +126,8 @@ struct RoadmapFeatureView: View {
                         .font(viewModel.configuration.style.statusFont)
                 }
             }
+			.accessibilityElement(children: .combine)
+			.accessibilityLabel(featureTitleDecriptionAccessibilityLabel)
         }
         .padding()
     }
