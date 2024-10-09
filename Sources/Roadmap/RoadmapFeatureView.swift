@@ -30,15 +30,18 @@ struct RoadmapFeatureView: View {
     var horizontalCell : some View {
         HStack {
             VStack(alignment: .leading, spacing: 8) {
-                Text(viewModel.feature.localizedFeatureTitle)
-                    .font(viewModel.configuration.style.titleFont)
-                
-                let description = viewModel.feature.localizedFeatureDescription
-                if !description.isEmpty {
-                    Text(description)
-                        .font(viewModel.configuration.style.numberFont)
-                        .foregroundColor(Color.secondary)
-                }
+				Group {
+					Text(viewModel.feature.localizedFeatureTitle)
+						.font(viewModel.configuration.style.titleFont)
+					
+					let description = viewModel.feature.localizedFeatureDescription
+					if !description.isEmpty {
+						Text(description)
+							.font(viewModel.configuration.style.numberFont)
+							.foregroundColor(Color.secondary)
+					}
+				}
+				.accessibilityElement(children: .combine)
 
                 if let localizedStatus = viewModel.feature.localizedFeatureStatus {
                     let status = viewModel.feature.unlocalizedFeatureStatus
