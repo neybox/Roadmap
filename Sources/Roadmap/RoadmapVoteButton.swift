@@ -72,6 +72,7 @@ struct RoadmapVoteButton: View {
                             if !viewModel.hasVoted {
                                 viewModel.configuration.style.upvoteIcon
 									.accessibility(hidden: true)
+									.accessibilityLabel(Text(""))
                                     .foregroundColor(hasVoted ? viewModel.configuration.style.selectedForegroundColor : viewModel.configuration.style.tintColor)
                                     .imageScale(.large)
                                     .font(viewModel.configuration.style.numberFont)
@@ -80,6 +81,7 @@ struct RoadmapVoteButton: View {
                             } else {
                                 viewModel.configuration.style.unvoteIcon
 									.accessibility(hidden: true)
+									.accessibilityLabel(Text(""))
                                     .foregroundColor(hasVoted ? viewModel.configuration.style.selectedForegroundColor : viewModel.configuration.style.tintColor)
                                     .imageScale(.large)
                                     .font(viewModel.configuration.style.numberFont)
@@ -97,6 +99,7 @@ struct RoadmapVoteButton: View {
                                 .minimumScaleFactor(0.9)
                         }
                     }
+					.accessibilityElement(children: .ignore)
 					.accessibility(hidden: true)
                     .frame(minWidth: 56)
                     .frame(height: 64)
@@ -139,8 +142,8 @@ struct RoadmapVoteButton: View {
                 hasVoted = viewModel.hasVoted
             }
         }
-		.accessibilityElement(children: .ignore)
-        .accessibilityHint(viewModel.canVote ? !viewModel.hasVoted ? Text("Vote for \(viewModel.feature.localizedFeatureTitle)") : Text("Remove vote for \(viewModel.feature.localizedFeatureTitle)") : Text(""))
+		.accessibilityLabel(viewModel.canVote ? !viewModel.hasVoted ? Text("Vote for \(viewModel.feature.localizedFeatureTitle)") : Text("Remove vote for \(viewModel.feature.localizedFeatureTitle)") : Text(""))
+//        .accessibilityHint(viewModel.canVote ? !viewModel.hasVoted ? Text("Vote for \(viewModel.feature.localizedFeatureTitle)") : Text("Remove vote for \(viewModel.feature.localizedFeatureTitle)") : Text(""))
 		.accessibilityAddTraits(.isButton)
 //        .help(viewModel.canVote ? !viewModel.hasVoted ? Text("Vote for \(viewModel.feature.localizedFeatureTitle)") : Text("Remove vote for \(viewModel.feature.localizedFeatureTitle)") : Text(""))
         .animateAccessible()
