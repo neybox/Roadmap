@@ -22,7 +22,7 @@ struct RoadmapFeatureView: View {
 			label += ". " + description
 		}
 
-		label += ". " + String(localized: "Currently ^[\(voteCount) votes](inflect: true)")
+		label += ". Currently \(voteCount) " + (voteCount == 1 ? "vote" : "votes")
 
 		return label
 	}
