@@ -15,6 +15,7 @@ struct RoadmapFeatureView: View {
 		let title = viewModel.feature.localizedFeatureTitle
 		let description = viewModel.feature.localizedFeatureDescription
 		let voteCount = viewModel.voteCount
+		let status = viewModel.feature.localizedFeatureStatus
 
 		var label = title
 
@@ -23,6 +24,10 @@ struct RoadmapFeatureView: View {
 		}
 
 		label += ". Currently \(voteCount) " + (voteCount == 1 ? "vote" : "votes")
+		
+		if let status {
+			label += ". Status: \(status)"
+		}
 
 		return label
 	}
