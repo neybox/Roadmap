@@ -30,7 +30,7 @@ struct RoadmapFeatureView: View {
     var horizontalCell : some View {
         HStack {
             VStack(alignment: .leading, spacing: 8) {
-				Group {
+				VStack(alignment: .leading, spacing: 0) {
 					Text(viewModel.feature.localizedFeatureTitle)
 						.font(viewModel.configuration.style.titleFont)
 					
