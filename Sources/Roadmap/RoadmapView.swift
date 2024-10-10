@@ -58,17 +58,32 @@ public struct RoadmapView<Header: View, Footer: View>: View {
 				.padding(.top, filterTopPadding)
 			}
 			
-			List {
-				header
-				ForEach(viewModel.filteredFeatures) { feature in
-					RoadmapFeatureView(viewModel: viewModel.featureViewModel(for: feature))
-						.macOSListRowSeparatorHidden()
-						.listRowInsets(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
-						.listRowBackground(Color.clear)
+			if #available(iOS 16.0, *) {
+				List {
+					header
+					ForEach(viewModel.filteredFeatures) { feature in
+						RoadmapFeatureView(viewModel: viewModel.featureViewModel(for: feature))
+							.macOSListRowSeparatorHidden()
+							.listRowInsets(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
+							.listRowBackground(Color.clear)
+					}
+					footer
 				}
-				footer
+				.listStyle(.plain)
+				.scrollIndicators(ScrollIndicatorVisibility.hidden)
+			} else {
+				List {
+					header
+					ForEach(viewModel.filteredFeatures) { feature in
+						RoadmapFeatureView(viewModel: viewModel.featureViewModel(for: feature))
+							.macOSListRowSeparatorHidden()
+							.listRowInsets(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
+							.listRowBackground(Color.clear)
+					}
+					footer
+				}
+				.listStyle(.plain)
 			}
-			.listStyle(.plain)
 		}
 	}
 }
