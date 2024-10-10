@@ -70,7 +70,7 @@ struct RoadmapFeatureView: View {
                         .cornerRadius(8)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
-								.stroke(.white, lineWidth: 1)
+								.stroke(Color(.blackLevelThree), lineWidth: 1)
                         )
                         .font(viewModel.configuration.style.statusFont)
                 }
@@ -126,7 +126,7 @@ struct RoadmapFeatureView: View {
                         .cornerRadius(8)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
-								.stroke(.white, lineWidth: 1)
+								.stroke(Color(.blackLevelThree), lineWidth: 1)
                         )
                         .font(viewModel.configuration.style.statusFont)
                 }
