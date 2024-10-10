@@ -16,12 +16,21 @@ public struct RoadmapStyle {
     
     /// The font used for the feature
     public var titleFont: Font
+	
+	/// The font used for the description
+	public var descriptionFont: Font
     
     /// The font used for the count label
     public var numberFont: Font
     
     /// The font used for the status views
     public var statusFont: Font
+	
+	/// The text colour for the feature title
+	public var titleColor: Color
+	
+	/// The text colour for the feature description
+	public var descriptionColor: Color
     
     /// The tint color of the status view
     public var statusTintColor: (String) -> Color
@@ -53,8 +62,11 @@ public struct RoadmapStyle {
     public init(upvoteIcon: Image,
                 unvoteIcon: Image,
                 titleFont: Font,
+				descriptionFont: Font,
                 numberFont: Font,
                 statusFont: Font,
+				titleColor: Color = Color.primary,
+				descriptionColor: Color = Color.secondary,
                 statusTintColor: @escaping (String) -> Color = { _ in Color.primary },
                 cornerRadius: CGFloat,
                 cellColor: Color = Color.defaultCellColor,
@@ -64,8 +76,11 @@ public struct RoadmapStyle {
         self.upvoteIcon = upvoteIcon
         self.unvoteIcon = unvoteIcon
         self.titleFont = titleFont
+		self.descriptionFont = descriptionFont
         self.numberFont = numberFont
         self.statusFont = statusFont
+		self.titleColor = titleColor
+		self.descriptionColor = descriptionColor
         self.statusTintColor = statusTintColor
         self.radius = cornerRadius
         self.cellColor = cellColor

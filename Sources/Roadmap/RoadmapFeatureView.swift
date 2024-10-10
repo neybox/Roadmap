@@ -53,12 +53,13 @@ struct RoadmapFeatureView: View {
             VStack(alignment: .leading, spacing: 8) {
 				Text(viewModel.feature.localizedFeatureTitle)
 					.font(viewModel.configuration.style.titleFont)
+					.foregroundColor(viewModel.configuration.style.titleColor)
 				
 				let description = viewModel.feature.localizedFeatureDescription
 				if !description.isEmpty {
 					Text(description)
 						.font(viewModel.configuration.style.numberFont)
-						.foregroundColor(Color.secondary)
+						.foregroundColor(viewModel.configuration.style.descriptionColor)
 				}
 
                 if let localizedStatus = viewModel.feature.localizedFeatureStatus {
@@ -101,6 +102,7 @@ struct RoadmapFeatureView: View {
 					HStack {
 						Text(viewModel.feature.localizedFeatureTitle)
 							.font(viewModel.configuration.style.titleFont)
+							.foregroundColor(viewModel.configuration.style.titleColor)
 						
 						if !viewModel.feature.hasNotFinished {
 							Spacer()
@@ -111,7 +113,7 @@ struct RoadmapFeatureView: View {
 					if !description.isEmpty {
 						Text(description)
 							.font(viewModel.configuration.style.numberFont)
-							.foregroundColor(Color.secondary)
+							.foregroundColor(viewModel.configuration.style.descriptionColor)
 					}
 				}
 				.accessibilityElement(children: .combine)
