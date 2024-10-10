@@ -62,6 +62,7 @@ public struct RoadmapView<Header: View, Footer: View>: View {
 				List {
 					header
 						.macOSListRowSeparatorHidden()
+						.listRowInsets(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
 					ForEach(viewModel.filteredFeatures) { feature in
 						RoadmapFeatureView(viewModel: viewModel.featureViewModel(for: feature))
 							.macOSListRowSeparatorHidden()
@@ -76,6 +77,7 @@ public struct RoadmapView<Header: View, Footer: View>: View {
 				List {
 					header
 						.macOSListRowSeparatorHidden()
+						.listRowInsets(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
 					ForEach(viewModel.filteredFeatures) { feature in
 						RoadmapFeatureView(viewModel: viewModel.featureViewModel(for: feature))
 							.macOSListRowSeparatorHidden()
