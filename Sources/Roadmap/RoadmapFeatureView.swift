@@ -84,7 +84,6 @@ struct RoadmapFeatureView: View {
                 RoadmapVoteButton(viewModel: viewModel)
             }
         }
-        .padding()
     }
     
     var verticalCell : some View {
@@ -134,7 +133,6 @@ struct RoadmapFeatureView: View {
 			.accessibilityElement(children: .combine)
 			.accessibilityLabel(featureTitleDecriptionAccessibilityLabel)
         }
-        .padding()
     }
 }
 
