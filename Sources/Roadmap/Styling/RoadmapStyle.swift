@@ -31,9 +31,12 @@ public struct RoadmapStyle {
 	
 	/// The text colour for the feature description
 	public var descriptionColor: Color
+	
+	/// The text color of the status
+	public var statusColor: Color
     
     /// The tint color of the status view
-    public var statusTintColor: (String) -> Color
+    public var statusTintColor: Color
     
     /// The corner radius for the upvote button
     public var radius: CGFloat
@@ -67,7 +70,8 @@ public struct RoadmapStyle {
                 statusFont: Font,
 				titleColor: Color = Color.primary,
 				descriptionColor: Color = Color.secondary,
-                statusTintColor: @escaping (String) -> Color = { _ in Color.primary },
+				statusColor: Color = Color.secondary,
+				statusTintColor: Color = Color.primary,
                 cornerRadius: CGFloat,
                 cellColor: Color = Color.defaultCellColor,
                 selectedColor: Color = .white,
@@ -81,6 +85,7 @@ public struct RoadmapStyle {
         self.statusFont = statusFont
 		self.titleColor = titleColor
 		self.descriptionColor = descriptionColor
+		self.statusColor = statusColor
         self.statusTintColor = statusTintColor
         self.radius = cornerRadius
         self.cellColor = cellColor

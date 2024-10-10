@@ -63,15 +63,15 @@ struct RoadmapFeatureView: View {
 				}
 
                 if let localizedStatus = viewModel.feature.localizedFeatureStatus {
-                    let status = viewModel.feature.unlocalizedFeatureStatus
+                    //let status = viewModel.feature.unlocalizedFeatureStatus
                     Text(localizedStatus)
                         .padding(6)
-                        .background(viewModel.configuration.style.statusTintColor(status).opacity(0.1))
-                        .foregroundColor(viewModel.configuration.style.statusTintColor(status))
+                        .background(viewModel.configuration.style.statusTintColor.opacity(0.1))
+                        .foregroundColor(viewModel.configuration.style.statusTintColor)
                         .cornerRadius(5)
                         .overlay(
                             RoundedRectangle(cornerRadius: 5)
-                                .stroke(viewModel.configuration.style.statusTintColor(status).opacity(0.15), lineWidth: 1)
+                                .stroke(viewModel.configuration.style.statusTintColor.opacity(0.15), lineWidth: 1)
                         )
                         .font(viewModel.configuration.style.statusFont)
                 }
@@ -120,15 +120,15 @@ struct RoadmapFeatureView: View {
 				.accessibilityLabel(featureTitleDecriptionAccessibilityLabel)
 
                 if let localizedStatus = viewModel.feature.localizedFeatureStatus {
-                    let status = viewModel.feature.unlocalizedFeatureStatus
+                    //let status = viewModel.feature.unlocalizedFeatureStatus
                     Text(localizedStatus)
                         .padding(6)
-                        .background(viewModel.configuration.style.statusTintColor(status).opacity(0.1))
-                        .foregroundColor(viewModel.configuration.style.statusTintColor(status))
+                        .background(viewModel.configuration.style.statusTintColor.opacity(0.1))
+                        .foregroundColor(viewModel.configuration.style.statusTintColor)
                         .cornerRadius(5)
                         .overlay(
                             RoundedRectangle(cornerRadius: 5)
-                                .stroke(viewModel.configuration.style.statusTintColor(status).opacity(0.15), lineWidth: 1)
+                                .stroke(viewModel.configuration.style.statusTintColor.opacity(0.15), lineWidth: 1)
                         )
                         .font(viewModel.configuration.style.statusFont)
                 }
