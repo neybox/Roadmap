@@ -61,6 +61,7 @@ public struct RoadmapView<Header: View, Footer: View>: View {
 			if #available(iOS 16.0, *) {
 				List {
 					header
+						.macOSListRowSeparatorHidden()
 					ForEach(viewModel.filteredFeatures) { feature in
 						RoadmapFeatureView(viewModel: viewModel.featureViewModel(for: feature))
 							.macOSListRowSeparatorHidden()
@@ -74,6 +75,7 @@ public struct RoadmapView<Header: View, Footer: View>: View {
 			} else {
 				List {
 					header
+						.macOSListRowSeparatorHidden()
 					ForEach(viewModel.filteredFeatures) { feature in
 						RoadmapFeatureView(viewModel: viewModel.featureViewModel(for: feature))
 							.macOSListRowSeparatorHidden()
