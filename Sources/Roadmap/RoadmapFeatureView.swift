@@ -65,12 +65,13 @@ struct RoadmapFeatureView: View {
                 if let localizedStatus = viewModel.feature.localizedFeatureStatus {
                     Text(localizedStatus)
                         .padding(6)
-                        .background(viewModel.configuration.style.statusTintColor)
+                        //.background(viewModel.configuration.style.statusTintColor)
+						.background(.blue)
                         .foregroundColor(viewModel.configuration.style.statusColor)
                         .cornerRadius(8)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
-								.stroke(Color("blackLevelThree"), lineWidth: 1)
+								.stroke(.white, lineWidth: 1)
                         )
                         .font(viewModel.configuration.style.statusFont)
                 }
@@ -121,12 +122,13 @@ struct RoadmapFeatureView: View {
                 if let localizedStatus = viewModel.feature.localizedFeatureStatus {
                     Text(localizedStatus)
                         .padding(6)
-                        .background(viewModel.configuration.style.statusTintColor)
+                        //.background(viewModel.configuration.style.statusTintColor)
+						.background(.blue)
                         .foregroundColor(viewModel.configuration.style.statusColor)
                         .cornerRadius(8)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color("blackLevelThree"), lineWidth: 1)
+								.stroke(.white, lineWidth: 1)
                         )
                         .font(viewModel.configuration.style.statusFont)
                 }
