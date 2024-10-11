@@ -63,6 +63,7 @@ public struct RoadmapView<Header: View, Footer: View>: View {
 					header
 						.macOSListRowSeparatorHidden()
 						.listRowInsets(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
+						.listRowBackground(Color.clear)
 					ForEach(viewModel.filteredFeatures) { feature in
 						RoadmapFeatureView(viewModel: viewModel.featureViewModel(for: feature))
 							.macOSListRowSeparatorHidden()
@@ -70,6 +71,7 @@ public struct RoadmapView<Header: View, Footer: View>: View {
 							.listRowBackground(Color.clear)
 					}
 					footer
+						.listRowBackground(Color.clear)
 				}
 				.listStyle(.plain)
 				.scrollIndicators(ScrollIndicatorVisibility.hidden)
@@ -78,6 +80,7 @@ public struct RoadmapView<Header: View, Footer: View>: View {
 					header
 						.macOSListRowSeparatorHidden()
 						.listRowInsets(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
+						.listRowBackground(Color.clear)
 					ForEach(viewModel.filteredFeatures) { feature in
 						RoadmapFeatureView(viewModel: viewModel.featureViewModel(for: feature))
 							.macOSListRowSeparatorHidden()
@@ -85,6 +88,7 @@ public struct RoadmapView<Header: View, Footer: View>: View {
 							.listRowBackground(Color.clear)
 					}
 					footer
+						.listRowBackground(Color.clear)
 				}
 				.listStyle(.plain)
 			}
