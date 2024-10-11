@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RoadmapFeatureView: View {
     @Environment(\.dynamicTypeSize) var typeSize
+	@Environment(\.colorScheme) var colorScheme: ColorScheme
     @StateObject var viewModel: RoadmapFeatureViewModel
 	
 	private var featureTitleDecriptionAccessibilityLabel: String {
@@ -40,12 +41,11 @@ struct RoadmapFeatureView: View {
                 horizontalCell
             }
         }
-        .background(viewModel.configuration.style.cellColor)
+		.background(isDarkTheme() ? viewModel.configuration.style.cellColorDark : viewModel.configuration.style.cellColorLight)
         .clipShape(RoundedRectangle(cornerRadius: viewModel.configuration.style.radius, style: .continuous))
-        .task {
-            await viewModel.getCurrentVotes()
-        }
-        
+		.task {
+			await viewModel.getCurrentVotes()
+		}
     }
     
     var horizontalCell : some View {
@@ -136,6 +136,13 @@ struct RoadmapFeatureView: View {
         }
         .padding()
     }
+	
+	private func isDarkTheme() -> Bool {
+		if let isDarkTheme = viewModel.configuration.style.isDarkTheme.wrappedValue {
+			return isDarkTheme
+		}
+		return colorScheme == .dark
+	}
 }
 
 struct RoadmapFeatureView_Previews: PreviewProvider {

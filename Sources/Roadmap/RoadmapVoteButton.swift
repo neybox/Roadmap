@@ -10,7 +10,8 @@ import SwiftUI
 struct RoadmapVoteButton: View {
     @ObservedObject var viewModel: RoadmapFeatureViewModel
     @Environment(\.dynamicTypeSize) var typeSize
-    
+	@Environment(\.colorScheme) var colorScheme: ColorScheme
+	
     @State private var isHovering = false
     @State private var showNumber = false
     @State private var hasVoted = false
@@ -158,9 +159,26 @@ struct RoadmapVoteButton: View {
         }
     }
     
+	@ViewBuilder
     private var backgroundView: some View {
-        viewModel.configuration.style.tintColor
-            .opacity(hasVoted ? 1 : 0.1)
-            .clipShape(RoundedRectangle(cornerRadius: viewModel.configuration.style.radius, style: .continuous))
+		if hasVoted {
+			viewModel.configuration.style.tintColor
+				.clipShape(RoundedRectangle(cornerRadius: viewModel.configuration.style.radius, style: .continuous))
+		} else {
+			if isDarkTheme() {
+				viewModel.configuration.style.voteButtonBGColorDark
+					.clipShape(RoundedRectangle(cornerRadius: viewModel.configuration.style.radius, style: .continuous))
+			} else {
+				viewModel.configuration.style.voteButtonBGColorLight
+					.clipShape(RoundedRectangle(cornerRadius: viewModel.configuration.style.radius, style: .continuous))
+			}
+		}
     }
+	
+	private func isDarkTheme() -> Bool {
+		if let isDarkTheme = viewModel.configuration.style.isDarkTheme.wrappedValue {
+			return isDarkTheme
+		}
+		return colorScheme == .dark
+	}
 }

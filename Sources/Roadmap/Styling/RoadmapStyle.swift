@@ -41,14 +41,26 @@ public struct RoadmapStyle {
     /// The corner radius for the upvote button
     public var radius: CGFloat
     
-    /// The backgroundColor of each cell
-    public var cellColor: Color
+    /// The backgroundColor of each cell for light mode
+    public var cellColorLight: Color
+	
+	/// The backgroundColor of each cell for dark mode
+	public var cellColorDark: Color
+	
+	/// The backgroundColor of each cell for light mode
+	public var voteButtonBGColorLight: Color
+	
+	/// The backgroundColor of each cell for dark mode
+	public var voteButtonBGColorDark: Color
     
     /// The color of the text and icon when voted
     public var selectedForegroundColor: Color
     
     /// The main tintColor for the roadmap views.
     public var tintColor: Color
+	
+	/// The main tintColor for the roadmap views.
+	public var isDarkTheme: Binding<Bool?>
     
     /// Define a `RoadmapStyle` to customise Roadmap to your needs
     /// - Parameters:
@@ -73,9 +85,13 @@ public struct RoadmapStyle {
 				statusColor: Color = Color.secondary,
 				statusTintColor: Color = Color.primary,
                 cornerRadius: CGFloat,
-                cellColor: Color = Color.defaultCellColor,
+                cellColorLight: Color = Color.defaultCellColor,
+				cellColorDark: Color = Color.defaultCellColor,
+				voteButtonBGColorLight: Color = Color.defaultCellColor,
+				voteButtonBGColorDark: Color = Color.defaultCellColor,
                 selectedColor: Color = .white,
-                tint: Color = .accentColor)
+                tint: Color = .accentColor,
+				isDarkTheme: Binding<Bool?>)
     {
         self.upvoteIcon = upvoteIcon
         self.unvoteIcon = unvoteIcon
@@ -88,8 +104,12 @@ public struct RoadmapStyle {
 		self.statusColor = statusColor
         self.statusTintColor = statusTintColor
         self.radius = cornerRadius
-        self.cellColor = cellColor
+		self.cellColorLight = cellColorLight
+		self.cellColorDark = cellColorDark
+		self.voteButtonBGColorLight = voteButtonBGColorLight
+		self.voteButtonBGColorDark = voteButtonBGColorDark
         self.selectedForegroundColor = selectedColor
         self.tintColor = tint
+		self.isDarkTheme = isDarkTheme
     }
 }

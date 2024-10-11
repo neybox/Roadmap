@@ -21,7 +21,8 @@ public enum RoadmapTemplate: CaseIterable {
 								descriptionFont: self.descriptionFont,
                                 numberFont: self.numberFont,
                                 statusFont: self.captionFont,
-                                cornerRadius: 10)
+								cornerRadius: 10,
+								isDarkTheme: .constant(nil))
         case .playful:
             return RoadmapStyle(upvoteIcon: Image(systemName: "arrow.up"),
                                 unvoteIcon: Image(systemName: "arrow.down"),
@@ -29,7 +30,9 @@ public enum RoadmapTemplate: CaseIterable {
 								descriptionFont: self.descriptionFont,
                                 numberFont: self.numberFont,
                                 statusFont: self.captionFont,
-                                cornerRadius: 15)
+                                cornerRadius: 15,
+								isDarkTheme: .constant(nil))
+
         case .classy:
             return RoadmapStyle(upvoteIcon: Image(systemName: "chevron.up"),
                                 unvoteIcon: Image(systemName: "chevron.down"),
@@ -37,7 +40,9 @@ public enum RoadmapTemplate: CaseIterable {
 								descriptionFont: self.descriptionFont,
                                 numberFont: self.numberFont,
                                 statusFont: self.captionFont,
-                                cornerRadius: 5)
+                                cornerRadius: 5,
+								isDarkTheme: .constant(nil))
+
         case .technical:
             return RoadmapStyle(upvoteIcon: Image(systemName: "chevron.up"),
                                 unvoteIcon: Image(systemName: "chevron.down"),
@@ -45,7 +50,8 @@ public enum RoadmapTemplate: CaseIterable {
 								descriptionFont: self.descriptionFont,
                                 numberFont: self.numberFont,
                                 statusFont: self.captionFont,
-                                cornerRadius: 2)
+                                cornerRadius: 2,
+								isDarkTheme: .constant(nil))
         }
     }
     
