@@ -1,0 +1,24 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Currently %d" : {
+      "extractionState" : "manual"
+    },
+    "Remove vote for %@" : {
+      "extractionState" : "manual"
+    },
+    "Status: %@" : {
+      "extractionState" : "manual"
+    },
+    "vote" : {
+      "extractionState" : "manual"
+    },
+    "Vote for %@" : {
+      "extractionState" : "manual"
+    },
+    "votes" : {
+      "extractionState" : "manual"
+    }
+  },
+  "version" : "1.0"
+}

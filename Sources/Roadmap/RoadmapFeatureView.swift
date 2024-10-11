@@ -21,10 +21,10 @@ struct RoadmapFeatureView: View {
 		var label = title
 
 		if !description.isEmpty {
-			label += ". " + description
+			label += ". " + description + ". "
 		}
 
-		label += ". Currently \(voteCount) " + (voteCount == 1 ? "vote" : "votes")
+		label += "\(String(format: NSLocalizedString("Currently %d", comment: ""), voteCount)) " + (voteCount == 1 ? NSLocalizedString("vote", comment: "") : NSLocalizedString("votes", comment: ""))
 		
 		if let status {
 			label += ". Status: \(status)"
