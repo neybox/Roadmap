@@ -24,7 +24,7 @@ struct RoadmapFeatureView: View {
 			label += ". " + description + ". "
 		}
 
-		label += "\(String(format: NSLocalizedString("Currently %d", comment: ""), voteCount)) " + (voteCount == 1 ? NSLocalizedString("vote", comment: "") : NSLocalizedString("votes", comment: ""))
+		label += "\(String.localizedStringWithFormat(NSLocalizedString("Currently %d", bundle: Bundle.main, comment: ""), voteCount)) " + (voteCount == 1 ? NSLocalizedString("vote", comment: "") : NSLocalizedString("votes", comment: ""))
 		
 		if let status {
 			label += ". Status: \(status)"
