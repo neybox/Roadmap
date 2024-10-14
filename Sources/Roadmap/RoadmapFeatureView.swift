@@ -62,7 +62,8 @@ struct RoadmapFeatureView: View {
 						.foregroundColor(viewModel.configuration.style.descriptionColor)
 				}
 
-                if let localizedStatus = viewModel.feature.localizedFeatureStatus {
+                if let localizedStatus = viewModel.feature.localizedFeatureStatus,
+				   !localizedStatus.isEmpty {
                     Text(localizedStatus)
                         .padding(6)
                         .background(viewModel.configuration.style.statusTintColor)
