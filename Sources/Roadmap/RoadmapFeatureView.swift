@@ -41,7 +41,7 @@ struct RoadmapFeatureView: View {
                 horizontalCell
             }
         }
-		.background(isDarkTheme() ? viewModel.configuration.style.cellColorDark : viewModel.configuration.style.cellColorLight)
+		.background(colorScheme == .dark ? viewModel.configuration.style.cellColorDark : viewModel.configuration.style.cellColorLight)
         .clipShape(RoundedRectangle(cornerRadius: viewModel.configuration.style.radius, style: .continuous))
 		.task {
 			await viewModel.getCurrentVotes()
