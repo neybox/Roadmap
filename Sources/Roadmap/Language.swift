@@ -11,6 +11,10 @@ enum Language {
     case LTR, RTL
     
     static var code: String {
-        Bundle.main.preferredLocalizations.first ?? "en"
-    }
+		if #available(iOS 16.0, *) {
+			return Locale.current.language.languageCode?.identifier ?? "en"
+		} else {
+			return Locale.current.languageCode ?? "en"
+		}
+	}
 }
