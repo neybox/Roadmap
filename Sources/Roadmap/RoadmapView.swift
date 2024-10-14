@@ -75,7 +75,6 @@ public struct RoadmapView<Header: View, Footer: View>: View {
 				}
 				.listStyle(.plain)
 				.scrollIndicators(ScrollIndicatorVisibility.hidden)
-				.edgesIgnoringSafeArea(.top)
 			} else {
 				List {
 					header
