@@ -16,7 +16,7 @@ struct RoadmapVoteButton: View {
     @State private var showNumber = false
     @State private var hasVoted = false
 	@State private var id = UUID()
-    
+	    
     var body: some View {
         Button {
 			if viewModel.canVote && viewModel.configuration.voter.canVote(for: viewModel.feature) {
@@ -111,6 +111,7 @@ struct RoadmapVoteButton: View {
             .contentShape(RoundedRectangle(cornerRadius: viewModel.configuration.style.radius, style: .continuous))
             .overlay(overlayBorder)
         }
+		.debounce(for: 0.5)
         .buttonStyle(.plain)
 		.disabled(!viewModel.canVote || !viewModel.configuration.voter.canVote(for: viewModel.feature))
 		.id(id)
