@@ -16,6 +16,7 @@ struct RoadmapVoteButton: View {
     @State private var showNumber = false
     @State private var hasVoted = false
 	@State private var id = UUID()
+	@State private var isDebouncing = false
 	    
     var body: some View {
         Button {
@@ -111,8 +112,7 @@ struct RoadmapVoteButton: View {
             .contentShape(RoundedRectangle(cornerRadius: viewModel.configuration.style.radius, style: .continuous))
             .overlay(overlayBorder)
         }
-		.debounce(for: 1.0)
-        //.buttonStyle(.plain)
+		.debounce(isDebouncing: $isDebouncing, for: 1.0)
 		.disabled(!viewModel.canVote || !viewModel.configuration.voter.canVote(for: viewModel.feature))
 		.id(id)
 		.onChange(of: viewModel.configuration.hasReachedVoteLimit.wrappedValue) { _ in

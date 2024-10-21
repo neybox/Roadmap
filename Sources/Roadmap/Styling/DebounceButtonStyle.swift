@@ -9,10 +9,11 @@ import SwiftUI
 import Combine
 
 struct DebounceButtonStyle: ButtonStyle {
-	@State private var isDebouncing = false
+	@Binding var isDebouncing: Bool
 	let interval: TimeInterval
 	
-	init(interval: TimeInterval = 1.0) {
+	init(isDebouncing: Binding<Bool>, interval: TimeInterval = 1.0) {
+		self._isDebouncing = isDebouncing
 		self.interval = interval
 	}
 	
