@@ -111,8 +111,8 @@ struct RoadmapVoteButton: View {
             .contentShape(RoundedRectangle(cornerRadius: viewModel.configuration.style.radius, style: .continuous))
             .overlay(overlayBorder)
         }
-        .buttonStyle(.plain)
 		.debounce(for: 1.0)
+        //.buttonStyle(.plain)
 		.disabled(!viewModel.canVote || !viewModel.configuration.voter.canVote(for: viewModel.feature))
 		.id(id)
 		.onChange(of: viewModel.configuration.hasReachedVoteLimit.wrappedValue) { _ in

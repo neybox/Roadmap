@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension View {
+extension Button {
 	func debounce(for interval: TimeInterval = 1.0) -> some View {
 		self.buttonStyle(DebounceButtonStyle(interval: interval))
 	}

@@ -18,16 +18,14 @@ struct DebounceButtonStyle: ButtonStyle {
 	
 	func makeBody(configuration: Configuration) -> some View {
 		configuration.label
-			.allowsHitTesting(!isDebouncing)
-			.simultaneousGesture(
-				TapGesture().onEnded { _ in
-					if !isDebouncing {
-						isDebouncing = true
-						DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
-							isDebouncing = false
-						}
+			.disabled(isDebouncing)
+			.onChange(of: configuration.isPressed) { isPressed in
+				if isPressed && !isDebouncing {
+					isDebouncing = true
+					DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
+						isDebouncing = false
 					}
 				}
-			)
+			}
 	}
 }
