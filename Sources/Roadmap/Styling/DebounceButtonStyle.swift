@@ -18,7 +18,6 @@ struct DebounceButtonStyle: ButtonStyle {
 	
 	func makeBody(configuration: Configuration) -> some View {
 		configuration.label
-			.opacity(isDebouncing ? 0.5 : 1.0)
 			.disabled(isDebouncing)
 			.onChange(of: configuration.isPressed) { isPressed in
 				if isPressed && !isDebouncing {
