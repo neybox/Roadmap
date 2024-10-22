@@ -11,6 +11,7 @@ import Combine
 public class RoadmapThemeStyleModel: ObservableObject {
 	@Published var isDarkTheme: Bool?
 	private var binding: Binding<Bool?>
+	private var cancellables = Set<AnyCancellable>()
 	
 	init(binding: Binding<Bool?>) {
 		self.binding = binding
@@ -18,6 +19,13 @@ public class RoadmapThemeStyleModel: ObservableObject {
 		
 		// Observe the binding's value
 		self.binding.wrappedValue = self.isDarkTheme
+		
+		self.isDarkTheme.publisher
+			.receive(on: DispatchQueue.main)
+			.sink { newValue in
+				print("~~~isDarkTheme: \(newValue)")
+			}
+			.store(in: &cancellables)
 	}
 }
 
@@ -78,8 +86,6 @@ public struct RoadmapStyle {
 	
 	/// The model handling theme state
 	public let themeObserverModel: RoadmapThemeStyleModel
-	
-	private var cancellables = Set<AnyCancellable>()
     
     /// Define a `RoadmapStyle` to customise Roadmap to your needs
     /// - Parameters:
@@ -131,12 +137,5 @@ public struct RoadmapStyle {
         self.tintColor = tint
 		self.isDarkTheme = isDarkTheme
 		self.themeObserverModel = RoadmapThemeStyleModel(binding: isDarkTheme)
-
-//		self.isDarkTheme.wrappedValue.publisher
-//			.receive(on: DispatchQueue.main)
-//			.sink { newValue in
-//				print("~~~isDarkTheme: \(newValue)")
-//			}
-//			.store(in: &cancellables)
     }
 }
