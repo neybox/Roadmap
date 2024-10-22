@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 public struct RoadmapConfiguration {
     /// Instead of a simple URL a Request is also possible for a more advanced way to the JSON
@@ -39,9 +40,6 @@ public struct RoadmapConfiguration {
 	/// A binding to whether the user has reached their vote limit
 	public var hasReachedVoteLimit: Binding<Bool>
 	
-	/// The main tintColor for the roadmap views.
-	public var isDarkTheme: Binding<Bool?>
-	
 	/// The model handling theme state
 	public let themeObserverModel: RoadmapThemeStyleModel
 
@@ -70,7 +68,7 @@ public struct RoadmapConfiguration {
                 allowsFilterByStatus: Bool = false,
 				maxVotesPerUser: Int? = nil,
 				hasReachedVoteLimit: Binding<Bool> = .constant(false),
-				isDarkTheme: Binding<Bool?> = .constant(false)) {
+				isDarkThemePublisher: AnyPublisher<Bool?, Never> = CurrentValueSubject<Bool?, Never>(nil).eraseToAnyPublisher()) {
         
         guard roadmapJSONURL != nil || roadmapRequest != nil else {
             fatalError("Missing roadmap URL or request")
@@ -94,8 +92,7 @@ public struct RoadmapConfiguration {
 		self.allowsFilterByStatus = allowsFilterByStatus
 		self.maxVotesPerUser = maxVotesPerUser
 		self.hasReachedVoteLimit = hasReachedVoteLimit
-		self.isDarkTheme = isDarkTheme
-		self.themeObserverModel = RoadmapThemeStyleModel(binding: isDarkTheme)
+		self.themeObserverModel = RoadmapThemeStyleModel(themePublisher: isDarkThemePublisher)
     }
 
 }

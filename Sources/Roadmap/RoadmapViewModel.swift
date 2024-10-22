@@ -11,7 +11,6 @@ final class RoadmapViewModel: ObservableObject {
     @Published private var features: [RoadmapFeature] = []
     @Published var searchText = ""
     @Published var statusToFilter = "all"
-	@Published var themeObserverModel: RoadmapThemeStyleModel
 
     var filteredFeatures: [RoadmapFeature] {
         if statusToFilter == "all" && searchText.isEmpty {
@@ -59,7 +58,6 @@ final class RoadmapViewModel: ObservableObject {
         self.configuration = configuration
         self.allowSearching = configuration.allowSearching
         self.allowsFilterByStatus = configuration.allowsFilterByStatus
-		self.themeObserverModel = RoadmapThemeStyleModel(binding: configuration.isDarkTheme)
         loadFeatures(request: configuration.roadmapRequest)
     }
 
