@@ -129,8 +129,7 @@ public struct RoadmapStyle {
 				voteButtonBGColorLight: Color = Color.defaultCellColor,
 				voteButtonBGColorDark: Color = Color.defaultCellColor,
                 selectedColor: Color = .white,
-                tint: Color = .accentColor,
-				isDarkTheme: Binding<Bool?>)
+                tint: Color = .accentColor)
     {
         self.upvoteIcon = upvoteIcon
         self.unvoteIcon = unvoteIcon
