@@ -144,6 +144,9 @@ struct RoadmapVoteButton: View {
                 hasVoted = viewModel.hasVoted
             }
         }
+		.accessibilityAction(named: viewModel.hasVoted
+							 ? Text("Voted")
+							 : Text("Vote removed")) {}
 		.accessibilityLabel(viewModel.canVote ? !viewModel.hasVoted
 							? Text("Vote for \(viewModel.feature.localizedFeatureTitle)")
 							: Text("Remove vote for \(viewModel.feature.localizedFeatureTitle)") : Text(""))
