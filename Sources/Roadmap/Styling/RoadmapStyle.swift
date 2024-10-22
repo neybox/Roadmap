@@ -19,14 +19,7 @@ public class RoadmapThemeStyleModel: ObservableObject {
 		
 		// Observe the binding's value
 		self.binding.wrappedValue = self.isDarkTheme
-		
-//		self.isDarkTheme.publisher
-//			.receive(on: DispatchQueue.main)
-//			.sink { newValue in
-//				print("~~~isDarkTheme: \(newValue)")
-//			}
-//			.store(in: &cancellables)
-		
+	
 		// Observe changes to isDarkTheme and update binding
 		$isDarkTheme
 			.receive(on: DispatchQueue.main)
@@ -37,15 +30,17 @@ public class RoadmapThemeStyleModel: ObservableObject {
 			.store(in: &cancellables)
 			
 		// Create a publisher from the binding and observe its changes
-//		binding.publisher
-//			.receive(on: DispatchQueue.main)
-//			.sink { [weak self] newValue in
-//				print("~~~Binding changed to: \(String(describing: newValue))")
-//				if self?.isDarkTheme != newValue {
-//					self?.isDarkTheme = newValue
-//				}
-//			}
-//			.store(in: &cancellables)
+		Timer.publish(every: 0.1, on: .main, in: .common)
+			.autoconnect()
+			.sink { [weak self] _ in
+				guard let self = self else { return }
+				let bindingValue = self.binding.wrappedValue
+				if self.isDarkTheme != bindingValue {
+					print("~~~Binding changed to: \(String(describing: bindingValue))")
+					self.isDarkTheme = bindingValue
+				}
+			}
+			.store(in: &cancellables)
 	}
 }
 
