@@ -100,12 +100,6 @@ public struct RoadmapStyle {
     
     /// The main tintColor for the roadmap views.
     public var tintColor: Color
-	
-	/// The main tintColor for the roadmap views.
-	public var isDarkTheme: Binding<Bool?>
-	
-	/// The model handling theme state
-	public let themeObserverModel: RoadmapThemeStyleModel
     
     /// Define a `RoadmapStyle` to customise Roadmap to your needs
     /// - Parameters:
@@ -155,7 +149,5 @@ public struct RoadmapStyle {
 		self.voteButtonBGColorDark = voteButtonBGColorDark
         self.selectedForegroundColor = selectedColor
         self.tintColor = tint
-		self.isDarkTheme = isDarkTheme
-		self.themeObserverModel = RoadmapThemeStyleModel(binding: isDarkTheme)
     }
 }

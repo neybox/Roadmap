@@ -22,7 +22,7 @@ struct RoadmapVoteButton: View {
 	
 	init(viewModel: RoadmapFeatureViewModel) {
 		self.viewModel = viewModel
-		self.themeObserver = viewModel.configuration.style.themeObserverModel
+		self.themeObserver = viewModel.configuration.themeObserverModel
 	}
 	
     var body: some View {
