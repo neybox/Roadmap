@@ -41,7 +41,7 @@ public struct RoadmapConfiguration {
 	public var hasReachedVoteLimit: Binding<Bool>
 	
 	/// The model handling theme state
-	//public let themeObserverModel: RoadmapThemeStyleModel
+	public let themeObserverModel: RoadmapThemeStyleModel
 
     /// Creates a new Roadmap configuration instance.
     /// - Parameters:
@@ -67,8 +67,8 @@ public struct RoadmapConfiguration {
                 allowSearching: Bool = false,
                 allowsFilterByStatus: Bool = false,
 				maxVotesPerUser: Int? = nil,
-				hasReachedVoteLimit: Binding<Bool> = .constant(false)) {
-				//isDarkThemePublisher: AnyPublisher<Bool?, Never> = CurrentValueSubject<Bool?, Never>(nil).eraseToAnyPublisher()) {
+				hasReachedVoteLimit: Binding<Bool> = .constant(false),
+				isDarkThemePublisher: AnyPublisher<Bool?, Never> = CurrentValueSubject<Bool?, Never>(nil).eraseToAnyPublisher()) {
         
         guard roadmapJSONURL != nil || roadmapRequest != nil else {
             fatalError("Missing roadmap URL or request")
@@ -92,7 +92,7 @@ public struct RoadmapConfiguration {
 		self.allowsFilterByStatus = allowsFilterByStatus
 		self.maxVotesPerUser = maxVotesPerUser
 		self.hasReachedVoteLimit = hasReachedVoteLimit
-		//self.themeObserverModel = RoadmapThemeStyleModel(themePublisher: isDarkThemePublisher)
+		self.themeObserverModel = RoadmapThemeStyleModel(themePublisher: isDarkThemePublisher)
     }
 
 }
