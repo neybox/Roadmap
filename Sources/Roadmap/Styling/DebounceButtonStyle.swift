@@ -19,7 +19,7 @@ struct DebounceButtonStyle: ButtonStyle {
 	
 	func makeBody(configuration: Configuration) -> some View {
 		configuration.label
-			.disabled(isDebouncing)
+			//.disabled(isDebouncing)
 			.onChange(of: configuration.isPressed) { isPressed in
 				if isPressed && !isDebouncing {
 					isDebouncing = true
