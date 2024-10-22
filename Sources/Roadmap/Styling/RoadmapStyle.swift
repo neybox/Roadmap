@@ -47,18 +47,41 @@ import Combine
 public class RoadmapThemeStyleModel: ObservableObject {
 	@Published var isDarkTheme: Bool?
 	private var binding: Binding<Bool?>
-
+	private var cancellables = Set<AnyCancellable>()
+	private let bindingChanged = PassthroughSubject<Bool?, Never>()
+	
 	init(binding: Binding<Bool?>) {
 		self.binding = binding
 		self.isDarkTheme = binding.wrappedValue
 		
-		// This ensures two-way binding
+		// Observe changes to isDarkTheme and update binding
+		$isDarkTheme
+			.receive(on: DispatchQueue.main)
+			.sink { [weak self] newValue in
+				print("~~~isDarkTheme changed to: \(String(describing: newValue))")
+				if self?.binding.wrappedValue != newValue {
+					self?.binding.wrappedValue = newValue
+				}
+			}
+			.store(in: &cancellables)
+		
+		// Observe binding changes through our PassthroughSubject
+		bindingChanged
+			.receive(on: DispatchQueue.main)
+			.sink { [weak self] newValue in
+				print("~~~Binding changed to: \(String(describing: newValue))")
+				if self?.isDarkTheme != newValue {
+					self?.isDarkTheme = newValue
+				}
+			}
+			.store(in: &cancellables)
+		
+		// Replace the binding with one that notifies of changes
 		self.binding = Binding(
-			get: { [weak self] in
-				self?.isDarkTheme
-			},
+			get: { binding.wrappedValue },
 			set: { [weak self] newValue in
-				self?.isDarkTheme = newValue
+				binding.wrappedValue = newValue
+				self?.bindingChanged.send(newValue)
 			}
 		)
 	}
