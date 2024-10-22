@@ -140,9 +140,9 @@ struct RoadmapFeatureView: View {
     }
 	
 	private func isDarkTheme() -> Bool {
-		if let isDarkTheme =  viewModel.configuration.themeObserverModel.isDarkTheme {
-			return isDarkTheme
-		}
+//		if let isDarkTheme =  viewModel.configuration.themeObserverModel.isDarkTheme {
+//			return isDarkTheme
+//		}
 		return colorScheme == .dark
 	}
 }
