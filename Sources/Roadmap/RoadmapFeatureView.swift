@@ -11,8 +11,7 @@ struct RoadmapFeatureView: View {
     @Environment(\.dynamicTypeSize) var typeSize
 	@Environment(\.colorScheme) var colorScheme: ColorScheme
 	
-	@ObservedObject private var viewModel: RoadmapFeatureViewModel
-	@ObservedObject private var themeObserver: RoadmapThemeStyleModel
+	@ObservedObject var viewModel: RoadmapFeatureViewModel
 	
 	private var featureTitleDecriptionAccessibilityLabel: String {
 		let title = viewModel.feature.localizedFeatureTitle
@@ -33,11 +32,6 @@ struct RoadmapFeatureView: View {
 		}
 
 		return label
-	}
-	
-	init(viewModel: RoadmapFeatureViewModel) {
-		self.viewModel = viewModel
-		self.themeObserver = viewModel.configuration.themeObserverModel
 	}
 
     var body: some View {
@@ -146,7 +140,7 @@ struct RoadmapFeatureView: View {
     }
 	
 	private func isDarkTheme() -> Bool {
-		if let isDarkTheme = themeObserver.isDarkTheme {
+		if let isDarkTheme =  viewModel.configuration.themeObserverModel.isDarkTheme {
 			return isDarkTheme
 		}
 		return colorScheme == .dark

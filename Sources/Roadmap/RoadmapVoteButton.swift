@@ -12,18 +12,11 @@ struct RoadmapVoteButton: View {
     @Environment(\.dynamicTypeSize) var typeSize
 	@Environment(\.colorScheme) var colorScheme: ColorScheme
 	
-	@ObservedObject private var themeObserver: RoadmapThemeStyleModel
-	
     @State private var isHovering = false
     @State private var showNumber = false
     @State private var hasVoted = false
 	@State private var id = UUID()
 	@State private var isDebouncing = false
-	
-	init(viewModel: RoadmapFeatureViewModel) {
-		self.viewModel = viewModel
-		self.themeObserver = viewModel.configuration.themeObserverModel
-	}
 	
     var body: some View {
         Button {
@@ -184,7 +177,7 @@ struct RoadmapVoteButton: View {
     }
 	
 	private func isDarkTheme() -> Bool {
-		if let isDarkTheme = themeObserver.isDarkTheme {
+		if let isDarkTheme = viewModel.configuration.themeObserverModel.isDarkTheme {
 			return isDarkTheme
 		}
 		return colorScheme == .dark
