@@ -10,7 +10,9 @@ import SwiftUI
 struct RoadmapFeatureView: View {
     @Environment(\.dynamicTypeSize) var typeSize
 	@Environment(\.colorScheme) var colorScheme: ColorScheme
-    @StateObject var viewModel: RoadmapFeatureViewModel
+	
+	@ObservedObject private var viewModel: RoadmapFeatureViewModel
+	@ObservedObject private var themeObserver: RoadmapThemeStyleModel
 	
 	private var featureTitleDecriptionAccessibilityLabel: String {
 		let title = viewModel.feature.localizedFeatureTitle
@@ -31,6 +33,11 @@ struct RoadmapFeatureView: View {
 		}
 
 		return label
+	}
+	
+	init(viewModel: RoadmapFeatureViewModel) {
+		self.viewModel = viewModel
+		self.themeObserver = viewModel.configuration.style.themeObserverModel
 	}
 
     var body: some View {
@@ -139,7 +146,7 @@ struct RoadmapFeatureView: View {
     }
 	
 	private func isDarkTheme() -> Bool {
-		if let isDarkTheme = viewModel.configuration.style.isDarkTheme.wrappedValue {
+		if let isDarkTheme = themeObserver.isDarkTheme {
 			return isDarkTheme
 		}
 		return colorScheme == .dark

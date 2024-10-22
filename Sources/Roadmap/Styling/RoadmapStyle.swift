@@ -6,6 +6,20 @@
 //
 import Foundation
 import SwiftUI
+import Combine
+
+public class RoadmapThemeStyleModel: ObservableObject {
+	@Published var isDarkTheme: Bool?
+	private var binding: Binding<Bool?>
+	
+	init(binding: Binding<Bool?>) {
+		self.binding = binding
+		self.isDarkTheme = binding.wrappedValue
+		
+		// Observe the binding's value
+		self.binding.wrappedValue = self.isDarkTheme
+	}
+}
 
 public struct RoadmapStyle {
     /// The image used for the upvote button
@@ -61,6 +75,11 @@ public struct RoadmapStyle {
 	
 	/// The main tintColor for the roadmap views.
 	public var isDarkTheme: Binding<Bool?>
+	
+	/// The model handling theme state
+	public let themeObserverModel: RoadmapThemeStyleModel
+	
+	private var cancellables = Set<AnyCancellable>()
     
     /// Define a `RoadmapStyle` to customise Roadmap to your needs
     /// - Parameters:
@@ -111,5 +130,13 @@ public struct RoadmapStyle {
         self.selectedForegroundColor = selectedColor
         self.tintColor = tint
 		self.isDarkTheme = isDarkTheme
+		self.themeObserverModel = RoadmapThemeStyleModel(binding: isDarkTheme)
+
+//		self.isDarkTheme.wrappedValue.publisher
+//			.receive(on: DispatchQueue.main)
+//			.sink { newValue in
+//				print("~~~isDarkTheme: \(newValue)")
+//			}
+//			.store(in: &cancellables)
     }
 }

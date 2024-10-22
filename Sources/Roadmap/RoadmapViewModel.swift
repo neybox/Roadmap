@@ -11,6 +11,8 @@ final class RoadmapViewModel: ObservableObject {
     @Published private var features: [RoadmapFeature] = []
     @Published var searchText = ""
     @Published var statusToFilter = "all"
+	
+	@Published var isDarkTheme: Bool = false
 
     var filteredFeatures: [RoadmapFeature] {
         if statusToFilter == "all" && searchText.isEmpty {
