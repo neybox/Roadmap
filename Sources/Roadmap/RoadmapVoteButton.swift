@@ -31,6 +31,8 @@ struct RoadmapVoteButton: View {
                     let haptic = UIImpactFeedbackGenerator(style: .soft)
                     haptic.impactOccurred()
                     #endif
+					UIAccessibility.post(notification: .announcement,
+										 argument: viewModel.hasVoted ? Text("Voted") : Text("Vote removed"))
                 }
             }
         } label: {
