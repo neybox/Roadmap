@@ -11,7 +11,7 @@ struct RoadmapFeatureView: View {
     @Environment(\.dynamicTypeSize) var typeSize
 	@Environment(\.colorScheme) var colorScheme: ColorScheme
 	
-	@ObservedObject var viewModel: RoadmapFeatureViewModel
+	@StateObject var viewModel: RoadmapFeatureViewModel
 	
 	private var featureTitleDecriptionAccessibilityLabel: String {
 		let title = viewModel.feature.localizedFeatureTitle
