@@ -16,8 +16,6 @@ struct RoadmapVoteButton: View {
     @State private var showNumber = false
     @State private var hasVoted = false
 	@State private var id = UUID()
-	@State private var isDebouncing = false
-	
 	@State private var lastTapTime: Date = .distantPast
 	
 	private let debounceInterval: TimeInterval = 0.75
@@ -46,9 +44,7 @@ struct RoadmapVoteButton: View {
         } label: {
 			buttonLabel
         }
-//		.accessibleDebounce(isDebouncing: $isDebouncing, for: 0.75)
-//		.debounce(isDebouncing: $isDebouncing, for: 0.75)
-		.disabled(!viewModel.canVote || isDebouncing || !viewModel.configuration.voter.canVote(for: viewModel.feature))
+		.disabled(!viewModel.canVote || !viewModel.configuration.voter.canVote(for: viewModel.feature))
 		.id(id)
 		.onChange(of: viewModel.configuration.hasReachedVoteLimit.wrappedValue) { _ in
 			id = UUID()

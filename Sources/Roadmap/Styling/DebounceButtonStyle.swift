@@ -29,23 +29,3 @@ struct DebounceButtonStyle: ButtonStyle {
 			}
 	}
 }
-
-struct AccessibleDebounceModifier: ViewModifier {
-	@Binding var isDebouncing: Bool
-	let interval: TimeInterval
-	
-	func body(content: Content) -> some View {
-		content
-			.simultaneousGesture(
-				TapGesture()
-					.onEnded { _ in
-						if !isDebouncing {
-							isDebouncing = true
-							DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
-								isDebouncing = false
-							}
-						}
-					}
-			)
-	}
-}
