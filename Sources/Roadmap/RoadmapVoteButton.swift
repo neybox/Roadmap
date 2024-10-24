@@ -74,7 +74,6 @@ struct RoadmapVoteButton: View {
                             if !viewModel.hasVoted {
                                 viewModel.configuration.style.upvoteIcon
 									.accessibility(hidden: true)
-									.accessibilityLabel(Text(""))
                                     .foregroundColor(hasVoted ? viewModel.configuration.style.selectedForegroundColor : viewModel.configuration.style.tintColor)
                                     .imageScale(.large)
                                     .font(viewModel.configuration.style.numberFont)
@@ -83,7 +82,6 @@ struct RoadmapVoteButton: View {
                             } else {
                                 viewModel.configuration.style.unvoteIcon
 									.accessibility(hidden: true)
-									.accessibilityLabel(Text(""))
                                     .foregroundColor(hasVoted ? viewModel.configuration.style.selectedForegroundColor : viewModel.configuration.style.tintColor)
                                     .imageScale(.large)
                                     .font(viewModel.configuration.style.numberFont)
@@ -144,10 +142,12 @@ struct RoadmapVoteButton: View {
                 hasVoted = viewModel.hasVoted
             }
         }
-		.accessibilityLabel(viewModel.canVote ? !viewModel.hasVoted
-							? Text("Upvote")
-							: Text("Downvote") : Text(""))
+		.accessibilityLabel(viewModel.canVote ? !viewModel.hasVoted ? "Upvote" : "Downvote" : "")
 		.accessibilityAddTraits(.isButton)
+		.accessibilityElement(children: .ignore)
+//		.accessibilityLabel(viewModel.canVote ? !viewModel.hasVoted
+//							? Text("Upvote")
+//							: Text("Downvote") : Text(""))
         .animateAccessible()
         .accessibilityShowsLargeContentViewer()
     }
