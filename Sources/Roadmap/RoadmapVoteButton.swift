@@ -31,8 +31,6 @@ struct RoadmapVoteButton: View {
                     let haptic = UIImpactFeedbackGenerator(style: .soft)
                     haptic.impactOccurred()
                     #endif
-					UIAccessibility.post(notification: .announcement,
-										 argument: viewModel.hasVoted ? Text("Voted") : Text("Vote removed"))
                 }
             }
         } label: {
@@ -146,12 +144,9 @@ struct RoadmapVoteButton: View {
                 hasVoted = viewModel.hasVoted
             }
         }
-		.accessibilityAction(named: viewModel.hasVoted
-							 ? Text("Voted")
-							 : Text("Vote removed")) {}
 		.accessibilityLabel(viewModel.canVote ? !viewModel.hasVoted
-							? Text("Vote for \(viewModel.feature.localizedFeatureTitle)")
-							: Text("Remove vote for \(viewModel.feature.localizedFeatureTitle)") : Text(""))
+							? Text("Upvote")
+							: Text("Downvote") : Text(""))
 		.accessibilityAddTraits(.isButton)
         .animateAccessible()
         .accessibilityShowsLargeContentViewer()
