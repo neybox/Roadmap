@@ -36,7 +36,7 @@ struct RoadmapVoteButton: View {
         } label: {
 			buttonLabel
         }
-		.debounce(isDebouncing: $isDebouncing, for: 1.0)
+		//.debounce(isDebouncing: $isDebouncing, for: 0.75)
 		.disabled(!viewModel.canVote || isDebouncing || !viewModel.configuration.voter.canVote(for: viewModel.feature))
 		.id(id)
 		.onChange(of: viewModel.configuration.hasReachedVoteLimit.wrappedValue) { _ in
