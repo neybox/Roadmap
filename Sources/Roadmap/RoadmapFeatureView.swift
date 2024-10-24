@@ -86,6 +86,7 @@ struct RoadmapFeatureView: View {
 				RoadmapVoteButton(viewModel: viewModel)
 					.accessibilityElement(children: .ignore)
 					.accessibilitySortPriority(1)
+					.accessibilityLabel(viewModel.canVote ? !viewModel.hasVoted ? "Upvote" : "Downvote" : "")
             }
         }
         .padding()
@@ -98,6 +99,7 @@ struct RoadmapFeatureView: View {
 					RoadmapVoteButton(viewModel: viewModel)
 						.accessibilityElement(children: .ignore)
 						.accessibilitySortPriority(1)
+						.accessibilityLabel(viewModel.canVote ? !viewModel.hasVoted ? "Upvote" : "Downvote" : "")
                     Spacer()
                 }
             }
