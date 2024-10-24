@@ -83,7 +83,9 @@ struct RoadmapFeatureView: View {
             Spacer()
             
             if viewModel.feature.hasNotFinished {
-                RoadmapVoteButton(viewModel: viewModel)
+				RoadmapVoteButton(viewModel: viewModel)
+					.accessibilityElement(children: .ignore)
+					.accessibilitySortPriority(1)
             }
         }
         .padding()
@@ -93,7 +95,9 @@ struct RoadmapFeatureView: View {
         VStack(alignment: .leading, spacing: 16) {
             if viewModel.feature.hasNotFinished {
                 HStack {
-                    RoadmapVoteButton(viewModel: viewModel)
+					RoadmapVoteButton(viewModel: viewModel)
+						.accessibilityElement(children: .ignore)
+						.accessibilitySortPriority(1)
                     Spacer()
                 }
             }
