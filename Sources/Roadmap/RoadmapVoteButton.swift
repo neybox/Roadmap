@@ -70,7 +70,6 @@ struct RoadmapVoteButton: View {
         }
 		.accessibilityElement(children: .combine)
 		.accessibilityLabel(viewModel.canVote ? !viewModel.hasVoted ? "Upvote" : "Downvote" : "")
-		.accessibilityAddTraits(.isButton)
 		.accessibilityAction(named: "") { }
         //.animateAccessible()
         //.accessibilityShowsLargeContentViewer()
