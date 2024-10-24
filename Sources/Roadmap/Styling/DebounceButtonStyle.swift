@@ -19,14 +19,13 @@ struct DebounceButtonStyle: ButtonStyle {
 	
 	func makeBody(configuration: Configuration) -> some View {
 		configuration.label
-			//.disabled(isDebouncing)
-			.onChange(of: configuration.isPressed) { isPressed in
-				if isPressed && !isDebouncing {
-					isDebouncing = true
-					DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
-						isDebouncing = false
-					}
-				}
-			}
+//			.onChange(of: configuration.isPressed) { isPressed in
+//				if isPressed && !isDebouncing {
+//					isDebouncing = true
+//					DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
+//						isDebouncing = false
+//					}
+//				}
+//			}
 	}
 }
