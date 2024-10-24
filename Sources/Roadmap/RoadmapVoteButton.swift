@@ -69,8 +69,8 @@ struct RoadmapVoteButton: View {
             }
         }
 		.accessibilityElement(children: .ignore)
-//		.accessibilityLabel(viewModel.canVote ? !viewModel.hasVoted ? "Upvote" : "Downvote" : "")
-		//.accessibilityAction(named: "") { }
+		.accessibilityLabel("")
+		.accessibilityAction(named: "") { }
 //		.accessibilitySortPriority(1)
         //.animateAccessible()
         //.accessibilityShowsLargeContentViewer()
