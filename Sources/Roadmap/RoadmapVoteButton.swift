@@ -68,13 +68,10 @@ struct RoadmapVoteButton: View {
                 hasVoted = viewModel.hasVoted
             }
         }
-		.accessibilityHidden(true)
-//		.accessibilityElement(children: .combine)
-//		.accessibilityLabel("")
-//		.accessibilityAction(named: "") { }
-//		.accessibilitySortPriority(1)
-        .animateAccessible()
-        //.accessibilityShowsLargeContentViewer()
+		.accessibilityElement(children: .ignore)
+		.accessibilityAction(named: "") { }
+        .accessibilityShowsLargeContentViewer()
+		.animateAccessible()
     }
 	
 	@ViewBuilder
