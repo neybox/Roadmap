@@ -69,7 +69,7 @@ struct RoadmapVoteButton: View {
             }
         }
 //		.accessibilityHidden(true)
-		.accessibilityElement(children: .combine)
+//		.accessibilityElement(children: .combine)
 //		.accessibilityLabel("")
 //		.accessibilityAction(named: "") { }
 //		.accessibilitySortPriority(1)
