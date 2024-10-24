@@ -68,12 +68,12 @@ struct RoadmapVoteButton: View {
                 hasVoted = viewModel.hasVoted
             }
         }
-//		.accessibilityHidden(true)
+		.accessibilityHidden(true)
 //		.accessibilityElement(children: .combine)
 //		.accessibilityLabel("")
 //		.accessibilityAction(named: "") { }
 //		.accessibilitySortPriority(1)
-        //.animateAccessible()
+        .animateAccessible()
         //.accessibilityShowsLargeContentViewer()
     }
 	
@@ -85,12 +85,14 @@ struct RoadmapVoteButton: View {
 					if viewModel.canVote {
 						if !viewModel.hasVoted {
 							viewModel.configuration.style.upvoteIcon
+								.accessibility(hidden: true)
 								.foregroundColor(hasVoted ? viewModel.configuration.style.selectedForegroundColor : viewModel.configuration.style.tintColor)
 								.imageScale(.large)
 								.font(Font.system(size: 17, weight: .medium))
 								.frame(maxWidth: 24, maxHeight: 24)
 						} else {
 							viewModel.configuration.style.unvoteIcon
+								.accessibility(hidden: true)
 								.foregroundColor(hasVoted ? viewModel.configuration.style.selectedForegroundColor : viewModel.configuration.style.tintColor)
 								.imageScale(.large)
 								.font(Font.system(size: 17, weight: .medium))
@@ -100,6 +102,7 @@ struct RoadmapVoteButton: View {
 					
 					if showNumber {
 						Text("\(viewModel.voteCount)")
+							.accessibility(hidden: true)
 							.lineLimit(1)
 							.foregroundColor(hasVoted ? viewModel.configuration.style.selectedForegroundColor : viewModel.configuration.style.tintColor)
 							.minimumScaleFactor(0.5)
@@ -114,6 +117,7 @@ struct RoadmapVoteButton: View {
 					if viewModel.canVote {
 						if !viewModel.hasVoted {
 							viewModel.configuration.style.upvoteIcon
+								.accessibility(hidden: true)
 								.foregroundColor(hasVoted ? viewModel.configuration.style.selectedForegroundColor : viewModel.configuration.style.tintColor)
 								.imageScale(.large)
 								.font(viewModel.configuration.style.numberFont)
@@ -121,6 +125,7 @@ struct RoadmapVoteButton: View {
 								.minimumScaleFactor(0.75)
 						} else {
 							viewModel.configuration.style.unvoteIcon
+								.accessibility(hidden: true)
 								.foregroundColor(hasVoted ? viewModel.configuration.style.selectedForegroundColor : viewModel.configuration.style.tintColor)
 								.imageScale(.large)
 								.font(viewModel.configuration.style.numberFont)
@@ -131,6 +136,7 @@ struct RoadmapVoteButton: View {
 					
 					if showNumber {
 						Text("\(viewModel.voteCount)")
+							.accessibility(hidden: true)
 							.lineLimit(1)
 							.foregroundColor(hasVoted ? viewModel.configuration.style.selectedForegroundColor : viewModel.configuration.style.tintColor)
 							.font(viewModel.configuration.style.numberFont)
@@ -144,7 +150,7 @@ struct RoadmapVoteButton: View {
 		}
 		.contentShape(RoundedRectangle(cornerRadius: viewModel.configuration.style.radius, style: .continuous))
 		.overlay(overlayBorder)
-		.accessibilityHidden(true)  // Make the entire label hierarchy inaccessible
+		.accessibilityHidden(true)
 	}
     
     @ViewBuilder

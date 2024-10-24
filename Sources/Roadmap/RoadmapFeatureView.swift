@@ -84,9 +84,8 @@ struct RoadmapFeatureView: View {
             
             if viewModel.feature.hasNotFinished {
 				RoadmapVoteButton(viewModel: viewModel)
-//					.accessibilityElement(children: .ignore)
-//					.accessibilityLabel(viewModel.canVote ? !viewModel.hasVoted ? "Upvote" : "Downvote" : "")
-					.accessibilityHint(viewModel.canVote ? !viewModel.hasVoted ? "Upvote" : "Downvote" : "")
+					.accessibilityLabel(viewModel.canVote ? !viewModel.hasVoted ? "Upvote" : "Downvote" : "")
+					.accessibilityHint(viewModel.hasVoted ? "Double tap to remove your vote" : "Double tap to cast your vote")
             }
         }
         .padding()
@@ -97,9 +96,8 @@ struct RoadmapFeatureView: View {
             if viewModel.feature.hasNotFinished {
                 HStack {
 					RoadmapVoteButton(viewModel: viewModel)
-//						.accessibilityElement(children: .ignore)
-//						.accessibilityLabel(viewModel.canVote ? !viewModel.hasVoted ? "Upvote" : "Downvote" : "")
-						.accessibilityHint(viewModel.canVote ? !viewModel.hasVoted ? "Upvote" : "Downvote" : "")
+						.accessibilityLabel(viewModel.canVote ? !viewModel.hasVoted ? "Upvote" : "Downvote" : "")
+						.accessibilityHint(viewModel.hasVoted ? "Double tap to remove your vote" : "Double tap to cast your vote")
                     Spacer()
                 }
             }
