@@ -41,6 +41,7 @@ struct RoadmapVoteButton: View {
                             if !viewModel.hasVoted {
                                 viewModel.configuration.style.upvoteIcon
 									.accessibility(hidden: true)
+									.accessibilityLabel(Text(""))
                                     .foregroundColor(hasVoted ? viewModel.configuration.style.selectedForegroundColor : viewModel.configuration.style.tintColor)
                                     .imageScale(.large)
                                     .font(Font.system(size: 17, weight: .medium))
@@ -48,6 +49,7 @@ struct RoadmapVoteButton: View {
                             } else {
                                 viewModel.configuration.style.unvoteIcon
 									.accessibility(hidden: true)
+									.accessibilityLabel(Text(""))
                                     .foregroundColor(hasVoted ? viewModel.configuration.style.selectedForegroundColor : viewModel.configuration.style.tintColor)
                                     .imageScale(.large)
                                     .font(Font.system(size: 17, weight: .medium))
@@ -58,6 +60,7 @@ struct RoadmapVoteButton: View {
                         if showNumber {
                             Text("\(viewModel.voteCount)")
 								.accessibility(hidden: true)
+								.accessibilityLabel(Text(""))
                                 .lineLimit(1)
                                 .foregroundColor(hasVoted ? viewModel.configuration.style.selectedForegroundColor : viewModel.configuration.style.tintColor)
                                 .minimumScaleFactor(0.5)
@@ -74,6 +77,7 @@ struct RoadmapVoteButton: View {
                             if !viewModel.hasVoted {
                                 viewModel.configuration.style.upvoteIcon
 									.accessibility(hidden: true)
+									.accessibilityLabel(Text(""))
                                     .foregroundColor(hasVoted ? viewModel.configuration.style.selectedForegroundColor : viewModel.configuration.style.tintColor)
                                     .imageScale(.large)
                                     .font(viewModel.configuration.style.numberFont)
@@ -82,6 +86,7 @@ struct RoadmapVoteButton: View {
                             } else {
                                 viewModel.configuration.style.unvoteIcon
 									.accessibility(hidden: true)
+									.accessibilityLabel(Text(""))
                                     .foregroundColor(hasVoted ? viewModel.configuration.style.selectedForegroundColor : viewModel.configuration.style.tintColor)
                                     .imageScale(.large)
                                     .font(viewModel.configuration.style.numberFont)
@@ -93,6 +98,7 @@ struct RoadmapVoteButton: View {
                         if showNumber {
                             Text("\(viewModel.voteCount)")
 								.accessibility(hidden: true)
+								.accessibilityLabel(Text(""))
                                 .lineLimit(1)
                                 .foregroundColor(hasVoted ? viewModel.configuration.style.selectedForegroundColor : viewModel.configuration.style.tintColor)
                                 .font(viewModel.configuration.style.numberFont)
