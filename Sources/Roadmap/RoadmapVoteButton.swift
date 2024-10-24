@@ -18,10 +18,20 @@ struct RoadmapVoteButton: View {
 	@State private var id = UUID()
 	@State private var isDebouncing = false
 	
+	@State private var lastTapTime: Date = .distantPast
+	
+	private let debounceInterval: TimeInterval = 0.75
+	
     var body: some View {
         Button {
+			let now = Date()
+			guard now.timeIntervalSince(lastTapTime) >= debounceInterval else {
+				return
+			}
+			
 			if viewModel.canVote && viewModel.configuration.voter.canVote(for: viewModel.feature) {
-                Task {
+				lastTapTime = now
+				Task {
                     if !viewModel.hasVoted {
                         await viewModel.vote()
                     } else {
@@ -36,7 +46,7 @@ struct RoadmapVoteButton: View {
         } label: {
 			buttonLabel
         }
-		.accessibleDebounce(isDebouncing: $isDebouncing, for: 0.75)
+//		.accessibleDebounce(isDebouncing: $isDebouncing, for: 0.75)
 //		.debounce(isDebouncing: $isDebouncing, for: 0.75)
 		.disabled(!viewModel.canVote || isDebouncing || !viewModel.configuration.voter.canVote(for: viewModel.feature))
 		.id(id)
