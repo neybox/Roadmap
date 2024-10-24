@@ -150,7 +150,7 @@ struct RoadmapVoteButton: View {
         }
 		.accessibilityLabel(viewModel.canVote ? !viewModel.hasVoted ? "Upvote" : "Downvote" : "")
 		.accessibilityAddTraits(.isButton)
-		.accessibilityElement(children: .ignore)
+//		.accessibilityElement(children: .ignore)
 //		.accessibilityLabel(viewModel.canVote ? !viewModel.hasVoted
 //							? Text("Upvote")
 //							: Text("Downvote") : Text(""))
