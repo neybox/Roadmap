@@ -68,7 +68,7 @@ struct RoadmapVoteButton: View {
                 hasVoted = viewModel.hasVoted
             }
         }
-		.accessibilityElement(children: .ignore)
+		.accessibilityElement(children: .combine)
 		.accessibilityLabel(viewModel.canVote ? !viewModel.hasVoted ? "Upvote" : "Downvote" : "")
 		.accessibilityAction(named: "") { }
 		.accessibilitySortPriority(1)
